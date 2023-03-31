@@ -88,6 +88,38 @@ class login extends StatelessWidget {
               )
             ],
           )
+        ),
+         Container(
+          margin: EdgeInsets.only(top: 30, left: 20),
+          alignment: Alignment.centerLeft,
+          child: RichText(text: TextSpan(
+            text: "Password",
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.blue,
+              fontWeight: FontWeight.bold
+            )
+          )
+          ),
+        ),
+         Container(
+          margin: EdgeInsets.only(top: 10,left: 15),
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(icon: Icon(Icons.lock)),
+                validator: (value){
+                  if (value == null || value.isEmpty){
+                    return 'Please Enter Your Password';
+                  }else{
+                    return null;
+                  }
+                }
+              )
+            ],
+          )
         )
 
 
