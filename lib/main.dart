@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '';
+import 'login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -116,7 +116,10 @@ class _MyHomePageState extends State<MyHomePage> {
     floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
            floatingActionButton: FloatingActionButton(
             backgroundColor: Colors.yellow,
-             onPressed: _incrementCounter,
+             onPressed: () {
+        // pindah ke halaman simple
+        Navigator.push(context, MaterialPageRoute(builder: (context) => login()));
+    },
             tooltip: 'Increment',
              child: const Icon(Icons.arrow_forward),
           ),
