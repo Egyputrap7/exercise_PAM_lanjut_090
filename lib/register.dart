@@ -39,7 +39,9 @@ class _registerState extends State<register> {
               child: Column(
             children: [
               Container(
-                  // floatingActionButtonLocation
+                margin: EdgeInsets.only(top: 12),
+                alignment: Alignment.topCenter,
+                  child: Image.asset('assets/image/pokemon_logo.png')
 
                   )
             ],
