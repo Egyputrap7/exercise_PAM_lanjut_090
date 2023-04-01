@@ -10,6 +10,8 @@ class _registerState extends State<register> {
   final _formKey = GlobalKey<FormState>();
   final namaController = TextEditingController();
   final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+
 
   bool passTogle = true;
 
@@ -79,6 +81,36 @@ class _registerState extends State<register> {
                           validator: (value) {
                             if (value == '') {
                               return 'Please Enter Your Name';
+                            }
+                          })
+                    ],
+                  )),
+                  Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                    text: TextSpan(
+                        text: "Email",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold))),
+              ),
+              Container(
+                  margin: EdgeInsets.only(left: 15),
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: emailController,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.email),
+                          ),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Please Enter Your Email';
                             }
                           })
                     ],
