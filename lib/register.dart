@@ -115,6 +115,36 @@ class _registerState extends State<register> {
                           })
                     ],
                   )),
+                  Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                    text: TextSpan(
+                        text: "Password",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold))),
+              ),
+              Container(
+                  margin: EdgeInsets.only(left: 15),
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: passwordController,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.lock),
+                          ),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Please Enter Your Password';
+                            }
+                          })
+                    ],
+                  )),
             ],
           )),
         )));
