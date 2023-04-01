@@ -13,6 +13,9 @@ class _registerState extends State<register> {
   final emailController = TextEditingController();
 
   bool passTogle = true;
+  bool repassTogle = true;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class _registerState extends State<register> {
             child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
           child: Form(
+            key: _formKey,
               child: Column(
             children: [
               Container(
@@ -107,13 +111,18 @@ class _registerState extends State<register> {
                       TextFormField(
                           keyboardType: TextInputType.emailAddress,
                           controller: emailController,
-                          decoration: const InputDecoration(
+                          decoration:  InputDecoration(
                             prefixIcon: Icon(Icons.email),
                           ),
                           validator: (value) {
-                            if (value == '') {
+                            if (value! .isEmpty) {
                               return 'Please Enter Your Email';
+                            }  final bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(value);
+                            if (!emailValid){
+                              return "Please  enter valid email";
                             }
+
                           })
                     ],
                   )),
@@ -129,24 +138,29 @@ class _registerState extends State<register> {
                             fontWeight: FontWeight.bold))),
               ),
               Container(
-                  margin: EdgeInsets.only(left: 15),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          controller: passwordController,
-                          decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
+                    margin: EdgeInsets.only(left: 15),
+                    alignment: Alignment.centerLeft,
+                    child: TextFormField(
+                        obscureText: passTogle,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          suffix: InkWell(
+                            onTap: _togglePasswordView,
+                            child: Icon(
+                              passTogle
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
                           ),
-                          validator: (value) {
+                        ),
+                        validator: (value) {
                             if (value == '') {
                               return 'Please Enter Your Password';
                             }
-                          })
-                    ],
-                  )),
+                          }
+                        ),
+                        
+                  ),
               Container(
                 margin: EdgeInsets.only(top: 20, left: 20),
                 alignment: Alignment.centerLeft,
@@ -159,24 +173,30 @@ class _registerState extends State<register> {
                             fontWeight: FontWeight.bold))),
               ),
               Container(
-                  margin: EdgeInsets.only(left: 15),
-                  alignment: Alignment.centerLeft,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          controller: passwordController,
-                          decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
+                    margin: EdgeInsets.only(left: 15),
+                    alignment: Alignment.centerLeft,
+                    child: TextFormField(
+                      controller: passwordController,
+                        obscureText: repassTogle,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          suffix: InkWell(
+                            onTap: _toggleRePasswordView,
+                            child: Icon(
+                              repassTogle
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
                           ),
-                          validator: (value) {
+                        ),
+                        validator: (value) {
                             if (value == '') {
-                              return 'Password must be the same';
+                              return 'Please Enter Your Password';
                             }
-                          })
-                    ],
-                  )),
+                          }
+                        ),
+                        
+                  ),
                   Container(
                 margin: EdgeInsets.only(top: 30, left: 20),
                 child: TextButton(
@@ -204,5 +224,15 @@ class _registerState extends State<register> {
             ],
           )),
         )));
+  }
+  void _togglePasswordView() {
+    setState(() {
+      passTogle = !passTogle;
+    });
+  }
+  void _toggleRePasswordView() {
+    setState(() {
+      repassTogle = !repassTogle;
+    });
   }
 }

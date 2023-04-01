@@ -16,7 +16,6 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //key: _formKey,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
@@ -105,7 +104,7 @@ class _loginState extends State<login> {
                   Container(
                     margin: EdgeInsets.only(left: 15),
                     alignment: Alignment.centerLeft,
-                    child: TextField(
+                    child: TextFormField(
                         obscureText: passTogle,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock),
@@ -117,7 +116,14 @@ class _loginState extends State<login> {
                                   : Icons.visibility_off,
                             ),
                           ),
-                        )),
+                        ),
+                        validator: (value) {
+                            if (value == '') {
+                              return 'Please Enter Your Password';
+                            }
+                          }
+                        ),
+                        
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 15, left: 20),
