@@ -15,9 +15,18 @@ class _registerState extends State<register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+        body: SingleChildScrollView(
+            child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
+      child: Form(
+        child: Column(
+          children: [
+            Container(
+              
+            )
+          ],
 
-      ),
-    );
+      )),
+    )));
   }
 }

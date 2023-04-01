@@ -16,16 +16,16 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _formKey,
+      //key: _formKey,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 60),
           child: Form(
-              // key: _formField,
+               key: _formKey,
               child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 100),
+                margin: EdgeInsets.only(top: 20),
                 alignment: Alignment.topCenter,
                 child: Image.asset(
                   'assets/image/pokemontext.png',
