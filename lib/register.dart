@@ -12,7 +12,6 @@ class _registerState extends State<register> {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
 
-
   bool passTogle = true;
 
   @override
@@ -22,7 +21,10 @@ class _registerState extends State<register> {
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: FloatingActionButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15.0))),
             child: Icon(Icons.arrow_back_sharp),
+
             onPressed: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => login()));
@@ -41,7 +43,7 @@ class _registerState extends State<register> {
                   child: CircleAvatar(
                     backgroundImage:
                         const AssetImage('assets/image/pokemon_logo.png'),
-                    radius: 60,
+                    radius: 40,
                   )),
               Container(
                 margin: EdgeInsets.only(top: 12),
@@ -50,7 +52,7 @@ class _registerState extends State<register> {
                   text: const TextSpan(
                       text: "Register",
                       style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 35,
                           fontWeight: FontWeight.bold,
                           color: Colors.yellow)),
                 ),
@@ -60,7 +62,7 @@ class _registerState extends State<register> {
                 alignment: Alignment.centerLeft,
                 child: RichText(
                     text: TextSpan(
-                        text: "Nama",
+                        text: "Name",
                         style: TextStyle(
                             fontSize: 18,
                             color: Colors.blue,
@@ -85,7 +87,7 @@ class _registerState extends State<register> {
                           })
                     ],
                   )),
-                  Container(
+              Container(
                 margin: EdgeInsets.only(top: 20, left: 20),
                 alignment: Alignment.centerLeft,
                 child: RichText(
@@ -115,7 +117,7 @@ class _registerState extends State<register> {
                           })
                     ],
                   )),
-                  Container(
+              Container(
                 margin: EdgeInsets.only(top: 20, left: 20),
                 alignment: Alignment.centerLeft,
                 child: RichText(
@@ -145,6 +147,60 @@ class _registerState extends State<register> {
                           })
                     ],
                   )),
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 20),
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                    text: TextSpan(
+                        text: "Re-Password",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold))),
+              ),
+              Container(
+                  margin: EdgeInsets.only(left: 15),
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: passwordController,
+                          decoration: const InputDecoration(
+                            prefixIcon: Icon(Icons.lock),
+                          ),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Password must be the same';
+                            }
+                          })
+                    ],
+                  )),
+                  Container(
+                margin: EdgeInsets.only(top: 30, left: 20),
+                child: TextButton(
+                    onPressed: () {
+                      if(_formKey.currentState!.validate()){
+
+                      }else{}
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 0.5,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.yellow,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 14.0, horizontal: 120),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0)))),
+              ),
             ],
           )),
         )));
