@@ -1,3 +1,4 @@
+import 'package:exercise_1/dashboard.dart';
 import 'package:exercise_1/login.dart';
 import 'package:flutter/material.dart';
 
@@ -87,6 +88,9 @@ class _registerState extends State<register> {
                                 if (value!.isEmpty) {
                                   return 'Please Enter Your Name';
                                 }
+                                else if(value.length < 6){
+                        return "Name must be atleast 6 characters";
+                                }
                               })
                         ],
                       )),
@@ -141,6 +145,7 @@ class _registerState extends State<register> {
                     margin: EdgeInsets.only(left: 15),
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      controller: passwordController,
                         obscureText: passTogle,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.lock),
@@ -157,6 +162,9 @@ class _registerState extends State<register> {
                           if(value!.isEmpty)
                       {
                         return 'Please a Enter Password';
+                      }
+                      else if (value.length < 6) {
+                        return "Password must be atleast 6 characters";
                       }
                       return null;
                         }),
@@ -209,6 +217,7 @@ class _registerState extends State<register> {
                     child: TextButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
+                            _sendDataToSecondScreen(context);
                           } else {}
                         },
                         child: Text(
@@ -242,5 +251,13 @@ class _registerState extends State<register> {
     setState(() {
       repassTogle = !repassTogle;
     });
+  }
+  void _sendDataToSecondScreen(BuildContext context) {
+    String textToSend = namaController.text;
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => dashboard (text: textToSend,),
+        ));
   }
 }
