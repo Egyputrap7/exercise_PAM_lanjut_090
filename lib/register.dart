@@ -145,6 +145,7 @@ class _registerState extends State<register> {
                     margin: EdgeInsets.only(left: 15),
                     alignment: Alignment.centerLeft,
                     child: TextFormField(
+                      key: Key('passwordField'),
                       controller: passwordController,
                         obscureText: passTogle,
                         decoration: InputDecoration(
